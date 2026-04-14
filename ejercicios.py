@@ -83,7 +83,7 @@ pedir = input("Ingresar la palabra : ")
 print(contar(pedir))'''
 
 # EJERCICIO 2.14
-''' def primeros5(palabra):
+def primeros5(palabra):
     return palabra[0:5]
 
 def posicionespar(palabra):
@@ -95,7 +95,7 @@ def darvuelta(palabra):
 pal = input()
 print(posicionespar(pal))
 print(primeros5(pal))
-print(darvuelta(pal))'''
+print(darvuelta(pal))
 
 # EJERCICIO 2.15
 ''' def borrarA(palabra):
