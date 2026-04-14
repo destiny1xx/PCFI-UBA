@@ -117,3 +117,23 @@ print(suma(1,2,3))'''
 
 print(gradosakelvin(35))'''
 
+
+# EJERCICIO 3
+print(5 / 2)
+print(5 // 2)
+print(5 % 2)
+print(5 ** 2)
+print(5.0 / 2)
+print(5.0 // 2)
+print(5.0 % 2)
+print(5.0 ** 2)
+print(5 / 2.0)
+print(5 // 2.0)
+print(5 % 2.0)
+print(5 ** 2.0)
+print(5.0 / 2.0)
+print(5.0 // 2.0)
+print(5.0 % 2.0)
+print(5.0 ** 2.0)
+print("Hola" * 2)
+print("Hola" + "2")
