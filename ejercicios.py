@@ -52,7 +52,7 @@ valor = int(input("Ingresa el numero del cual quieres recibir el valor absoluto 
 print(valorabsoluto(valor))'''
 
 # EJERCICIO 2.9
-''' def verificar(num):
+''' verificar(num):
     return num % 2 == 0
     
 valor = int(input("Ingresa el numero del cual quieres saber si es par o impar : "))
@@ -105,6 +105,15 @@ valor = input("Ingresa la palabra : ")
 print(borrarA(valor))'''
 
 
-# Hola, esto es una prueba.
+# CLASE 14/4
+'''def suma(a,b,c):
+    return (a+b+c) // 3
 
+print(suma(1,2,3))'''
+
+'''def gradosakelvin(celsius):
+    kelvin = celsius + 273.15
+    return kelvin
+
+print(gradosakelvin(35))'''
 
