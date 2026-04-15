@@ -251,7 +251,8 @@ def CrearUsuario(nombre, numero):
 
 # EJERCICIO 3.4
 # Escribir una función para determinar si una letra recibida es vocal o no. La misma debe devolver un valor booleano. Luego, escribir una función para determinar si una letra es consonante o no.
-''' vocales = ["a", "e", "i", "o", "u"]
+'''
+vocales = ["a", "e", "i", "o", "u"]
 
 def es_vocal(letra):
     if letra.lower() in vocales:
@@ -263,7 +264,241 @@ def es_consonante(letra):
     if letra.lower() not in vocales:
         return True
     
-    return False '''
+    return False
+
+def es_vocalis(letra):
+    if letra.lower() == "a" or letra.lower() == "e" or letra.lower() == "i" or letra.lower() == "o" or letra.lower() == "u":
+        return True
+    
+    return False
+
+def es_consonanteis(letra):
+    if letra.lower() != "a" and letra.lower() != "e" and letra.lower() != "i" and letra.lower() != "o" and letra.lower() != "u":
+        return True
+    
+    return False
+'''
+
+# EJERCICIOS 3.5 a y b
+# Dado un año, que devuelva si es bisiesto. Nota: un año es bisiesto si es un número divisible por 4, pero no si es divisible por 100, excepto que también sea divisible por 400.
+# Dado un mes y un año, que devuelva la cantidad de días correspondientes.
+'''def es_biciesto(año):
+    if (año % 4 == 0 and not año % 100 == 0) or año % 400 == 0:
+        return 29
+    else:
+        return 28
+    
+Meses_con_30 = [11, 4, 6, 9]
+Meses_con_31 = [1, 3, 5, 7, 8, 10, 12]
+
+def devolver_dias(mes, año):
+    if mes == 2:
+        dias = es_biciesto(año)
+        return dias
+    
+    if mes in Meses_con_30:
+        return 30
+    elif mes in Meses_con_31:
+        return 31
+    
+    return "Ingresa un mes o año valido."
+'''
+# EJERCICIO 3.5 c
+# Pedirle al usuario su día y mes de cumpleaños. El programa debe imprimir un mensaje indicando a qué signo corresponde el usuario.
+
+'''def devolver_signo_de_usuario():
+    dia = int(input("Ingresa tu dia de cumpleaños: "))
+    mes = input("Ingresa tu mes de cumpleaños: ")
+    mes = mes.lower()
+
+    if (mes == "marzo" and dia >= 21) or (mes == "abril" and dia <= 20):
+        print("Tu signo es Aries!")
+
+    elif (mes == "abril" and dia >= 21) or (mes == "mayo" and dia <= 20):
+        print("Tu signo es Tauro!")
+
+    elif (mes == "mayo" and dia >= 21) or (mes == "junio" and dia <= 21):
+        print("Tu signo es Geminis!")
+
+    elif (mes == "junio" and dia >= 22) or (mes == "julio" and dia <= 23):
+        print("Tu signo es Cáncer!")
+
+    elif (mes == "julio" and dia >= 24) or (mes == "agosto" and dia <= 23):
+        print("Tu signo es Leo!")
+
+    elif (mes == "agosto" and dia >= 24) or (mes == "septiembre" and dia <= 23):
+        print("Tu signo es Virgo!")
+
+    elif (mes == "septiembre" and dia >= 24) or (mes == "octubre" and dia <= 22):
+        print("Tu signo es Libra!")
+
+    elif (mes == "octubre" and dia >= 23) or (mes == "noviembre" and dia <= 22):
+        print("Tu signo es Escorpio!")
+
+    elif (mes == "noviembre" and dia >= 23) or (mes == "diciembre" and dia <= 21):
+        print("Tu signo es Sagitario!")
+    
+    elif (mes == "diciembre" and dia >= 22) or (mes == "enero" and dia <= 20):
+        print("Tu signo es Capricornio!")
+    
+    elif (mes == "enero" and dia >= 21) or (mes == "febrero" and dia <= 19):
+        print("Tu signo es Acuario!")
+    
+    elif (mes == "febrero" and dia >= 20) or (mes == "marzo" and dia <= 20):
+        print("Tu signo es Piscis!")
+'''
+
+# EJERCICIO 3.6
+# Piedra, papel o tijera: escribir un programa de “Piedra, papel o tijera” tal que sea imposible que el usuario gane. El usuario debe ingresar R (piedra), P (papel), o T (tijera) y la computadora debe siempre ganarle. Las ejecuciones son individuales: el usuario sólo ingresa una sola vez su jugada, el programa le gana, y la ejecución termina.
+'''
+def piedra_papel_o_tijera():
+    print("¡Piedra (R), papel (P) o tijera (T)!")
+    jugada = input("Ingrese jugada: ").upper()
+    if jugada not in ["R", "P", "T"]:
+        print("Esa jugada no está disponible.")
+        return
+    if jugada == "R":
+        print("¡Papel! ¡Gané!")
+        return
+    if jugada == "P":
+        print("¡Tijera! ¡Gané!")
+        return
+    if jugada == "T":
+        print("¡Piedra! ¡Gané!")
+        return'''
 
 
-hdjdjsjsks
+# EJERCICIO 3.7
+# Suponiendo que el primer día del año fue lunes, escribir una función que reciba un número con el día del año (de 1 a 366) y devuelva el día de la semana que le toca. Por ejemplo: si se recibe ‘3’, debe devolver “miércoles”, y si se recibe ‘9’, debe devolver “martes”.
+'''
+def devolver_dia_de_semana(dia):
+    if dia < 1 or dia > 366:
+        return "Ingrese un dia valido entre 1 a 366."
+
+    dias = [
+        "Lunes",
+        "Martes",
+        "Miercoles",
+        "Jueves",
+        "Viernes",
+        "Sabado",
+        "Domingo",
+    ]
+
+    devolucion = (dia - 1) % 7
+    return dias[devolucion]
+'''
+
+####################### SEGUNDA PARTE DE LA UNIDAD 3  CICLOS #############################
+
+# EJERCICIO 3.1 a y b y c y d y e
+# Imprima por pantalla todos los números entre 10 y 20.
+'''def imprimir():
+    for num in range(10,20):
+        print(num)
+
+# Salude a todas las personas de una lista
+def saludar_a_personas():
+    personas = [
+        "Flaminia", 
+        "Serena", 
+        "Agustina", 
+        "Priscila", 
+        "Sol", 
+        "Agostina", 
+        "Iara", 
+        "Lu"
+    ]
+
+    for persona in personas:
+        print(f"Hola {persona}! Vamos a aprender a programar")
+
+# Le pida al usuario que ingrese 5 números y le muestre la suma total de todos ellos.
+def sumar_numeros():
+    acumulativa = 0
+    for i in range (1,6):
+        numero = int(input(f"Ingresa el numero n{i} a sumar: "))
+        acumulativa += numero
+
+    print(acumulativa) 
+
+# Reciba dos números, y recorra todos los números entre ellos, imprimiendo en pantalla si es par o impar. Por ejemplo, recibiendo 1 y 3, debe imprimir:
+def recorrer_numeros(n1, n2):
+    for nums in range(n1, n2 + 1):
+        if nums % 2 == 0:
+            print(f"{nums} es par")
+        else:
+            print(f"{nums} es impar")
+'''
+
+# EJERCICIO 3.2
+# Se quiere hacer un programa para enseñar a los niños las tablas de multiplicar del 1 al 10. Crear una función que reciba un número e imprima por pantalla la tabla de multiplicar de ese número. Ejemplo:
+'''
+def mostrar_tabla_de_multiplicacion(numero):
+    numero = int(numero)
+    if (numero < 0) or (numero > 10):
+        print("Error: El número debe ser positivo y estar entre 1 y 10")
+        return
+    for mutiplicador in range (1,11):
+        print(f"{numero} x {mutiplicador} = {numero * mutiplicador}")'''
+
+
+# EJERCICIO 3.3
+# Crear una función que cante el feliz cumpleaños. Dado un entero, debe imprimir ‘Que los cumplas feliz’ en distintas líneas por esa cantidad de veces.
+'''
+def cantar_cumpleaños(num):
+    num = int(num)
+    if num < 0:
+        print("El numero tiene que ser mayor a cero")
+        return
+    
+    for cumple in range(num):
+        print(f"Que los cumplas feliz\n")'''
+
+
+# EJERCICIO 3.4
+# Programa de cobro
+'''
+def cobrar():
+    total_a_pagar = 500
+    print(f"Su total a pagar es : {total_a_pagar}")
+
+    while total_a_pagar > 0:
+        print(f"Pendientes: {total_a_pagar}")
+        monto_a_pagar = int(input("Ingrese el monto a pagar: "))
+        total_a_pagar = total_a_pagar - monto_a_pagar
+    
+    if total_a_pagar == 0:
+        print("Pendientes: 0")
+        print("Gracias por su compra.")
+    elif total_a_pagar < 0:
+        print(f"Su vuelto es {abs(total_a_pagar)}")'''
+        
+# EJERCICIO 3.5 
+# LOOP MULTIPLICAR
+'''
+def mostrar_tablas_de_multiplicar():
+    print("Hola! Esto es Tablas de Multiplicar")
+    while True:
+        opcion = input("Ingrese un número o 'X' para salir:  ")
+
+        if opcion == "X" or opcion == "x":
+            print("Adios!")
+            break
+
+        if opcion == str:
+            print("Ingrese un numero.")
+            continue
+
+        opcion = int(opcion)
+
+        if (opcion < 0) or (opcion > 10):
+            print("Error: El número debe ser positivo y estar entre 1 y 10")
+            continue
+
+        for mutiplicador in range (1,11):
+            print(f"{opcion} x {mutiplicador} = {opcion * mutiplicador}")
+'''
+
+# EJERCICIO 3.6
+# MANEJO DE CONTRASEÑAS
