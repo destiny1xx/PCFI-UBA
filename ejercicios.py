@@ -245,8 +245,12 @@ def CrearUsuario(nombre, numero):
 
 # EJERCICIO 3.3
 # Escribir una función que reciba un número y devuelva True si es entero y False si no lo es. Pista: no se puede usar la función isinstance.
-'''def es_entero(num):
-    return num == int(num)'''
+'''a que def es_entero(num):
+    return num == int(num)
+
+print(es_entero(5.5))
+print(es_entero(5))
+print(es_entero(5.0))'''
 
 
 # EJERCICIO 3.4
@@ -287,8 +291,11 @@ def es_consonanteis(letra):
         return 29
     else:
         return 28
+
+print(es_biciesto(2024))
+print(es_biciesto(2026))'''
     
-Meses_con_30 = [11, 4, 6, 9]
+'''Meses_con_30 = [11, 4, 6, 9]
 Meses_con_31 = [1, 3, 5, 7, 8, 10, 12]
 
 def devolver_dias(mes, año):
@@ -394,7 +401,7 @@ def devolver_dia_de_semana(dia):
 # EJERCICIO 3.1 a y b y c y d y e
 # Imprima por pantalla todos los números entre 10 y 20.
 '''def imprimir():
-    for num in range(10,20):
+    for num in range(10,21[]):
         print(num)
 
 # Salude a todas las personas de una lista
@@ -458,14 +465,15 @@ def cantar_cumpleaños(num):
 
 # EJERCICIO 3.4
 # Programa de cobro
-'''
-def cobrar():
+
+'''def cobrar():
     total_a_pagar = 500
     print(f"Su total a pagar es : {total_a_pagar}")
 
     while total_a_pagar > 0:
         print(f"Pendientes: {total_a_pagar}")
-        monto_a_pagar = int(input("Ingrese el monto a pagar: "))
+        monto_a_pagar = 
+        int(input("Ingrese el monto a pagar: "))
         total_a_pagar = total_a_pagar - monto_a_pagar
     
     if total_a_pagar == 0:
@@ -473,6 +481,8 @@ def cobrar():
         print("Gracias por su compra.")
     elif total_a_pagar < 0:
         print(f"Su vuelto es {abs(total_a_pagar)}")'''
+        
+        
         
 # EJERCICIO 3.5 
 # LOOP MULTIPLICAR
