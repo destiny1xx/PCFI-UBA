@@ -1,3 +1,5 @@
+import random
+
 # EJERCICIO 2.1
 # Guardar el texto “Hola, Mundo!” en una variable e imprimirla por pantalla.
 '''saludo = "Hola, Mundo!"
@@ -512,3 +514,238 @@ def mostrar_tablas_de_multiplicar():
 
 # EJERCICIO 3.6
 # MANEJO DE CONTRASEÑAS
+'''def validarcontraseña():
+    logged = False
+    intentos = 3
+    contraseña = "pepearturo"
+
+    while intentos > 0:
+        contraseña2 = input("Ingrese la contraseña: ")
+        if contraseña2 == contraseña:
+            logged = True
+            break
+        intentos -= 1
+        print(f"Contraseña incorrecta, te quedan {intentos} intentos")
+    
+    if intentos == 0:
+        print(f"Ha excedido los intentos, cuenta bloqueada {logged}")
+        logged = False
+        return logged
+
+    print(f"Bienvenido! {logged}")
+    return logged'''
+
+
+# EJERCICIO 3.7
+# adivinanza
+'''
+def adivinar(numero_a_adivinar):
+    numero_adivinado = 0
+    intentos = 3
+    print("Adivinemos el numero!")
+
+    while numero_a_adivinar != numero_adivinado and intentos > 0:
+        numero_adivinado = int(input("Ingresa el numero a adivinar: "))
+        if numero_adivinado == numero_a_adivinar:
+            print(f"Adivinaste! el numero era {numero_a_adivinar}, felicidades!")
+            break
+
+        intentos -= 1
+        if numero_adivinado < numero_a_adivinar:
+            print(f"El numero ingresado es menor al que hay que adivinar, te quedan {intentos} intentos")
+
+        if numero_adivinado > numero_a_adivinar:
+            print(f"El numero ingresado es mayor al que hay que adivinar, te quedan {intentos} intentos")
+
+    if intentos == 0:
+        print(f"No pudiste adivinar! el numero era: {numero_a_adivinar}")
+        return
+
+def adivinar():
+    numero_a_adivinar = random.randint(1, 10)
+    numero_adivinado = 0
+    intentos = 3
+    print("Adivinemos el numero!")
+
+    while numero_a_adivinar != numero_adivinado and intentos > 0:
+        numero_adivinado = int(input("Ingresa el numero a adivinar: "))
+        if numero_adivinado == numero_a_adivinar:
+            print(f"Adivinaste! el numero era {numero_a_adivinar}, felicidades!")
+            break
+
+        intentos -= 1
+
+        if numero_adivinado < numero_a_adivinar:
+            print(f"El numero ingresado es menor al que hay que adivinar, te quedan {intentos} intentos")
+
+        if numero_adivinado > numero_a_adivinar:
+            print(f"El numero ingresado es mayor al que hay que adivinar, te quedan {intentos} intentos")
+
+    if intentos == 0:
+        print(f"No pudiste adivinar! el numero era: {numero_a_adivinar}")
+        return'''
+
+# EJERCICIO 3.8
+# maquina de sacar juguetes
+'''def maquina_de_juguetes(numero):
+    fichas = 0
+    contador = numero
+
+    while numero > fichas:
+        ficha = input(f"Ingresá {contador} fichas para comenzar: ")
+        if ficha == "F":
+            fichas += 1
+            contador -= 1
+        
+    print("¡A jugar!")
+
+maquina_de_juguetes(3)'''
+
+
+# EJERCICIO 3.9
+# Numero primo
+'''def es_primo(numero):
+    if numero < 2:
+        print("Ingresa un numero mayor o igual que 2")
+        return
+    
+    for i in range(2,numero):
+        if numero % i == 0:
+            print("No es primo")
+            break
+    print("Es Primo")
+
+
+es_primo(6)
+es_primo(3)
+es_primo(5)
+es_primo(7)
+es_primo(11)'''
+
+
+# EJERCICIO 3.10 
+# DESAFIO NUMERO ENTERO
+'''def imprimirrango(num):
+    primos = []
+    for numero in range(1, num):
+        esprimo = True
+        for divisor in range(2, numero):
+            if numero % divisor == 0:
+                esprimo = False
+                break
+
+        if esprimo:
+            primos.append(numero)
+    
+    print(f"{primos} son numeros primos")
+
+
+imprimirrango(100)'''
+
+
+# EJERCICIO 3.11
+# M ultiplos de 7
+'''def multiplos_de_7(n1, n2):
+    numeros = []
+    suma = 0
+    for numero in range(n1, n2 + 1):
+        if numero % 7 == 0:
+            if numero % 2 == 0:
+                 continue
+            numeros.append(numero)
+            suma += numero
+            if len(numeros) == 3:
+                break
+    
+    if len(numeros) == 0:
+            return "No hay numeros entre ese rango multiplos de 7"
+    else:
+         return f"{numeros} son numeros multiplos de 7 y su suma es {suma}, su promedio es {suma / len(numeros)}"
+    
+print(multiplos_de_7(1,60))
+'''
+
+
+# EJERCICIO 3.12
+# EXAMEN
+'''def examen(ejercicios, porcentaje):
+    print(f"El examen tiene {ejercicios} ejercicios y necesitas el {porcentaje}% para aprobar")
+    while True:
+        ejercicios_resueltos = input("Ingresa la cantidad de ejercicios resueltos o '*' para salir: ")
+        if ejercicios_resueltos == "*":
+            break
+
+        try:
+            ejercicios_resueltos = int(ejercicios_resueltos)
+        except:
+            print("Error")
+            continue
+
+        if ejercicios_resueltos > ejercicios or ejercicios_resueltos < 0:
+            print("Error")
+            continue
+
+        porcentajeaprobado = (ejercicios_resueltos / ejercicios) * 100
+        if porcentajeaprobado >= porcentaje:
+            print(f"Felicitaciones! aprobaste con el {porcentajeaprobado}%!")
+        else:
+            print(f"Desaprobaste el examen, con {porcentajeaprobado}% de {porcentaje}%, suerte la proxima!")'''
+
+
+# CORRECCION
+'''
+def esta_en_rango_entre_numero_1_y_10_con_extremos_inclusive(numero):
+    return 1 <= numero <= 10
+
+print(esta_en_rango_entre_numero_1_y_10_con_extremos_inclusive(20))  
+print(esta_en_rango_entre_numero_1_y_10_con_extremos_inclusive(5))   
+print(esta_en_rango_entre_numero_1_y_10_con_extremos_inclusive(10))  
+
+
+def suma_hasta(n):
+    suma = 0
+    i = 1
+    while i <= n:
+        suma +=i
+        i+= 1
+
+    return suma
+
+def contar(inicio, fin):
+    contador = 0
+    for i in range(inicio, fin):
+        if i % 2 == 0:
+            contador += 1
+
+    return contador'''
+
+###############################################################################
+
+###################################### UNIDAD 4 ######################################################
+
+# EJERCICIO 4.1
+def encadenar(caracteres, cadena):
+    string = ""
+    for i in range(0, len(caracteres)):
+        string += f"{caracteres[i]}"
+        if i != len(caracteres) - 1:
+            string += f"{cadena}"
+    
+    return string
+
+def guionbajo(texto, caracter):
+    return texto.replace(" ", caracter)
+
+def reemplazardigitos(texto, cadena):
+    for i in range (0, len(texto)):
+        numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8" , "9"]
+        if texto[i] in numbers:
+            texto.replace(texto[i], cadena)
+    return texto # A arreglar.
+
+
+print(encadenar("separar", "-"))
+print(guionbajo('mi archivo de texto.txt', '_'))
+print(reemplazardigitos('su clave es: 1540', '*'))
+
+    
