@@ -288,11 +288,11 @@ def es_consonanteis(letra):
 # EJERCICIOS 3.5 a y b
 # Dado un año, que devuelva si es bisiesto. Nota: un año es bisiesto si es un número divisible por 4, pero no si es divisible por 100, excepto que también sea divisible por 400.
 # Dado un mes y un año, que devuelva la cantidad de días correspondientes.
-'''def es_biciesto(año):
+'''def es_bisiesto(año):
     if (año % 4 == 0 and not año % 100 == 0) or año % 400 == 0:
-        return 29
+        return "Es Bisiesto"
     else:
-        return 28
+        return "No es Bisiesto"
 
 print(es_biciesto(2024))
 print(es_biciesto(2026))'''
@@ -403,7 +403,7 @@ def devolver_dia_de_semana(dia):
 # EJERCICIO 3.1 a y b y c y d y e
 # Imprima por pantalla todos los números entre 10 y 20.
 '''def imprimir():
-    for num in range(10,21[]):
+    for num in range(10,21):
         print(num)
 
 # Salude a todas las personas de una lista
@@ -724,28 +724,111 @@ def contar(inicio, fin):
 ###################################### UNIDAD 4 ######################################################
 
 # EJERCICIO 4.1
-def encadenar(caracteres, cadena):
+'''def encadenar(caracteres, cadena, maximo):
     string = ""
+    inserciones = 0
     for i in range(0, len(caracteres)):
+
         string += f"{caracteres[i]}"
-        if i != len(caracteres) - 1:
+
+        if (i != len(caracteres) - 1) and (inserciones < maximo):
             string += f"{cadena}"
+            inserciones += 1
     
     return string
 
-def guionbajo(texto, caracter):
-    return texto.replace(" ", caracter)
+def guionbajo(texto, caracter, maximo):
+    return texto.replace(" ", caracter, maximo)
 
-def reemplazardigitos(texto, cadena):
-    for i in range (0, len(texto)):
-        numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8" , "9"]
-        if texto[i] in numbers:
-            texto.replace(texto[i], cadena)
-    return texto # A arreglar.
+def reemplazardigitos(texto, cadena, maximo):
+    string = ""
+    contador = 0
+    for letra in texto:
+
+        if letra.isdigit() and contador < maximo:
+            string += cadena
+            contador += 1
+            continue
+
+        string += letra
+
+    return string 
+
+def cada3digitos(texto, cadena, maximo):
+    string = ""
+    contar = 0
+    inserciones = 0
+    for i in range(0, len(texto)):
+        string += f"{texto[i]}"
+        contar += 1
+
+        if (contar == 3) and (i != len(texto) - 1) and (inserciones < maximo):
+            string += f"{cadena}"
+            contar = 0
+            inserciones += 1
+    
+    return string
 
 
-print(encadenar("separar", "-"))
-print(guionbajo('mi archivo de texto.txt', '_'))
-print(reemplazardigitos('su clave es: 1540', '*'))
 
+print(encadenar("separar", "-", 1))
+print(guionbajo('mi archivo de texto.txt', '_', 3))
+print(reemplazardigitos('su clave es: 1540', '*', 2))
+print(cada3digitos('2552552550', '.', 3))'''
+
+
+# EJERCICIO 4.2 
+# CADENA DE MILES
+'''def mostrar_miles(num):
+    numfinal = ""
+    contar = 0
+    num = str(num)
+    num = num[::-1]
+    for i in range(0, len(num)):
+        numfinal += num[i]
+        contar += 1
+
+        if contar == 3 and i != len(num) - 1 :
+            numfinal += "."
+            contar = 0
+
+    return numfinal[::-1]
+
+print(mostrar_miles(28475284658624))'''
+
+
+# EJERCICIO 4.3
+# Devuelva la primera letra de cada palabra. Ejemplo: si se recibe Ciclo Básico Común se debe devolver CBC.
+'''def devolver_primera_letra(palabra):
+    palabra = palabra.split()
+    final = ""
+    for i in palabra:
+        final += i[0]
+
+    return final
+
+print(devolver_primera_letra("Ciclo Basico Comun"))'''
+
+# Indique si se trata de un palíndromo. Por ejemplo, anita lava la tina es un palíndromo (se lee igual de izquierda a derecha que de derecha a izquierda).
+'''def es_palindromo(palabra):
+    texto_limpio = (palabra.lower()).replace(" ", "")
+    texto_limpio = texto_limpio.replace(",", "")
+
+    if texto_limpio[::-1]== texto_limpio:
+        return "Es Palíndromo"
+    else:
+        return "No es Palíndromo"
+
+print(es_palindromo("anita lava la tina"))
+print(es_palindromo("Reconocer"))
+print(es_palindromo("Anilina"))
+print(es_palindromo("milanesa de pure"))
+print(es_palindromo("Dábale arroz a la zorra el abad"))
+print(es_palindromo("Sé verlas al revés"))
+print(es_palindromo("A ti no, bonita"))
+print(es_palindromo("No deseo yo ese don"))
+print(es_palindromo("Yo hago yoga hoy"))'''
+
+# EJERCICIO 4.4
+# 
     
