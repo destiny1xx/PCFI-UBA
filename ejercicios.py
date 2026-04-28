@@ -830,5 +830,103 @@ print(es_palindromo("No deseo yo ese don"))
 print(es_palindromo("Yo hago yoga hoy"))'''
 
 # EJERCICIO 4.4
-# 
+# Indique si la segunda cadena es subcadena de la primera. Por ejemplo, 'compu' es subcadena de 'computacional'.
+'''def es_subcadena(cadena, subcadena):
+    if subcadena.lower() in cadena.lower():
+        return "Es Subcadena!"
+    else:
+        return "No es Subcadena!"
     
+# Devuelva la que sea anterior en orden alfábetico. Por ejemplo, si recibe 'kde' y 'gnome' debe devolver 'gnome'.
+def orden_alfabetico(p1, p2):
+    if p1.lower() < p2.lower():
+        return p1
+    else:
+        return p2
+    
+print(es_subcadena("milanesa de pure", "milanesa"))
+print(orden_alfabetico("f", "c"))
+'''
+
+
+# EJERCICIO 4.5
+# Escribir una función que, dada una cadena de caracteres, devuelva una lista con cada uno de los caracteres que la componen en mayúscula. Ejemplo: 'Hola' debe devolver ['H', 'O', 'L', 'A']. Restricción: no se permite el uso de ciclos for/while. Pista: Buscá en el apunte cómo usar map.
+'''def mayuscula(p):
+    return p.upper()
+
+def devolver_lista_en_mayuscula(cadena):
+    return list(map(mayuscula, cadena))
+
+print(devolver_lista_en_mayuscula("Hola"))
+'''
+
+
+# EJERCICIO 4.6
+# Escribir una función que, dada una cadena de caracteres, devuelva una tupla con cada uno de los caracteres que no es una vocal. Ejemplo: 'Algoritmos' debe devolver ('l', 'g', 'r', 't', 'm', 's'). Restricción: no se permite el uso de ciclos for/while.
+'''def es_consonante(letra):
+    return letra not in "AEIOUaeiou"
+
+def tupla_de_caracteres(cadena):
+    return list(filter(es_consonante, cadena))
+
+print(tupla_de_caracteres("Algoritmos"))
+'''
+    
+
+# EJERCICIO 4.7 
+# Escribir una función que, dada una cadena de caracteres, devuelva el número de índice de posición del último caracter. Por ejemplo, para la cadena 'Hola' debe devolver 3. Restricción: no se permite el uso de ciclos for/while.
+'''def indice_ultimo_caracter(cadena):
+    return len(cadena) - 1 
+        
+print(indice_ultimo_caracter("Hola"))
+'''
+
+# EJERCICIO 4.8
+# Se quiere implementar un buscador dentro de un editor de texto, que permita encontrar todas las ocurrencias de una palabra en un texto. Para ello, se debe implementar una función que reciba como parámetro una palabra y un texto, y que devuelva la primer aparición de la palabra en el texto. Pista: index arrojará un error si la subcadena no se encuentra. ¿Qué otro método tenemos disponible para buscar subcadenas?
+'''def buscador(palabra, texto):
+    resultado = (texto.lower()).find(palabra.lower())
+    if resultado >= 0:
+        return f"Se encontro resultado en el indice : {resultado}"
+    else:
+        return "No se encontro resultado"
+    
+
+# Modificar la función anterior para que devuelva una lista con las posiciones de inicio de cada ocurrencia de la palabra dentro del texto. Ejemplo: si se busca 'al' en 'calcule el precio al valor actual', debe devolver [1, 18, 22, 31]. Pista: del método usado en el punto anterior, ¿conocemos algún parámetro adicional que le podamos pasar?
+def buscador2(palabra, texto):
+    posicion = (texto.lower()).find(palabra.lower())
+    posiciones = []
+
+    while posicion != -1:
+        posiciones.append(posicion)
+        posicion = (texto.lower()).find(palabra.lower(), posicion + 1)
+
+    return posiciones
+
+print(buscador2("al", "calcule el precio al valor actual"))
+
+
+# Modificar la función anterior para que devuelva la cantidad de ocurrencias encontradas. Ejemplo: si se busca 'al' en 'calcule el precio al valor actual', debe devolver 4. Restricción: No se puede usar el método len.
+def buscador3(palabra, texto):
+    resultado = (texto.lower()).count(palabra.lower())
+
+    return resultado
+
+print(buscador3("al", "calcule el precio al valor actual"))'''
+        
+
+# EJERCICIO 4.9
+# Desafío (no obligatorio): Escribir una función que reciba dos cadenas de caracteres y devuelva una lista con todos los caracteres que no tienen en común. Ejemplo: 'Python' y 'Hola' debería devolver el conjunto de letras ['P', 'y', 't', 'l', 'a', 'n'], indiferentemente del orden y de si está en mayúscula o minúscula. Nota: para que un caracter esté en la lista, no es necesario que esté en la misma posición.
+def lista_caracteres(t1, t2):
+    caracteres_no_en_comun = []
+
+    for letra in t1:
+        if letra.lower() not in t2.lower():
+            caracteres_no_en_comun.append(letra)
+
+    for letra in t2:
+        if letra.lower() not in t1.lower():
+            caracteres_no_en_comun.append(letra)
+
+    return caracteres_no_en_comun
+
+print(lista_caracteres("Python", "Hola"))
