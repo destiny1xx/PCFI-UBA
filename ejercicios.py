@@ -916,6 +916,7 @@ print(buscador3("al", "calcule el precio al valor actual"))'''
 
 # EJERCICIO 4.9
 # Desafío (no obligatorio): Escribir una función que reciba dos cadenas de caracteres y devuelva una lista con todos los caracteres que no tienen en común. Ejemplo: 'Python' y 'Hola' debería devolver el conjunto de letras ['P', 'y', 't', 'l', 'a', 'n'], indiferentemente del orden y de si está en mayúscula o minúscula. Nota: para que un caracter esté en la lista, no es necesario que esté en la misma posición.
+'''
 def lista_caracteres(t1, t2):
     caracteres_no_en_comun = []
 
@@ -929,4 +930,19 @@ def lista_caracteres(t1, t2):
 
     return caracteres_no_en_comun
 
-print(lista_caracteres("Python", "Hola"))
+print(lista_caracteres("Python", "Hola"))'''
+
+
+
+# CLASE 4/5
+
+def crea_lista_super():
+    super = []
+    producto = input("Producto o X")
+    while producto != "X":
+        super.append(producto)
+        producto = input("Producto o X para salir:")
+
+    return ",".join(super)ñ
+
+         
