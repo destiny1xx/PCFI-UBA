@@ -52,20 +52,17 @@ def gestionar_envio_de_alfajores(costo_fijo):
         # Si el peso del paquete es menor a 1000 g, el costo fijo se reduce a la mitad.
         if peso < 1000:
             costo_de_envio = (costo_fijo / 2) + peso
-            print(f"El costo del envío es: {costo_de_envio}")
-            lista_de_envios.append((costo_de_envio, peso))
             
         # Si el peso del paquete es mayor o igual a 1000 g y menor o igual a 2000 g, el costo fijo se mantiene sin cambios.
-        if 1000 <= peso <= 2000:
+        elif 1000 <= peso <= 2000:
             costo_de_envio = costo_fijo + peso
-            print(f"El costo del envío es: {costo_de_envio}")
-            lista_de_envios.append((costo_de_envio, peso))
 
         # Si el peso del paquete es mayor a 2000 g, el costo fijo se duplica.
-        if peso > 2000:
+        else:
             costo_de_envio = (costo_fijo * 2) + peso
-            print(f"El costo del envío es: {costo_de_envio}")
-            lista_de_envios.append((costo_de_envio, peso))
+
+        print(f"El costo del envío es: {costo_de_envio}")
+        lista_de_envios.append((costo_de_envio, peso))
 
         peso = input("> Ingrese el peso (en g) del paquete o 'X' para salir: ")
     
