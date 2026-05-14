@@ -936,13 +936,168 @@ print(lista_caracteres("Python", "Hola"))'''
 
 # CLASE 4/5
 
-def crea_lista_super():
-    super = []
-    producto = input("Producto o X")
-    while producto != "X":
-        super.append(producto)
-        producto = input("Producto o X para salir:")
+'''def crear_lista_super():
+  lista_super = []
 
-    return ",".join(super)ñ
+  while len(lista_super) < 5:
+    producto = input("Ingresar producto o cortar funcion con X: ")
+
+    if producto == "X":
+      break
+    else:
+       lista_super.append(producto)
+    
+  cadena_de_productos = ', '.join(lista_super)
+  return cadena_de_productos
+
+print(crear_lista_super())'''
+
+
+############################################# RANGOS, TUPLAS Y LISTAS UNIDAD 4 ###############################################
+
+
+# EJERCICIO 4.1 - a.b.c
+# Imprimir los números del 10 al 50 inclusive, saltando de 5 en 5.
+'''for num in range(10,51,5):
+    print(num)'''
+
+# Imprimir los números del 40 al 20 en orden decreciente, saltando de 2 en 2.
+'''for num in range(40, 19, -2):
+    print(num)'''
+
+# Crear una lista con los números del 4 al 10. Luego, acceder con el índice a los elementos que contienen a los números 4, 6 y 9 e impimirlos por pantalla. Pista: recordar que los índices comienzan en 0.
+'''def crear_lista():
+    lista_de_numeros = [numero for numero in range(4, 11)]
+    print(lista_de_numeros[0], lista_de_numeros[2], lista_de_numeros[5])
+    
+crear_lista()'''
+
+
+# EJERCICIO 4.2 - a.b.c
+# Escribir una función que reciba:
+
+# Una lista y devuelva True si su longitud es par y False si su longitud es impar.
+'''def longitud_par_o_impar(lista):
+    return len(lista) % 2 == 0'''
+
+# Una lista de números cualesquiera y devuelva el elemento máximo y el mínimo.
+'''def devolver_elemento_maximo_y_minimo(lista):
+    return max(lista), min(lista)'''
+
+# Una lista de números y devuelva otra lista con los mismos números ordenados de menor a mayor. Por ejemplo, si recibe [5, 10, 7, 3] debe devolver [3, 5, 7, 10].
+'''def ordenar_menor_a_mayor(lista):
+    return sorted(lista, reverse=False)
+
+print(ordenar_menor_a_mayor([5, 10, 7, 3]))'''
+
+
+# EJERCICIO 4.3 - a.b
+# Escribir una función que reciba una lista de nombres y un número, que representa el cupo. La función debe devolver en una lista a los nombres que no pudieron entrar al curso por falta de cupo. Ejemplo: chequear_cupo(['Agustina', 'Iara', 'Priscila', 'Sol', 'Lucía'], 3) debe devolver ['Sol', 'Lucía']
+'''def chequear_cupo(listapersonas, numerocupo):
+    return listapersonas[numerocupo:len(listapersonas)]
+
+print(chequear_cupo(['Agustina', 'Iara', 'Priscila', 'Sol', 'Lucía'], 3))'''
+
+# Modificar la función anterior para que devuelva únicamente a la última persona de la lista de la gente que pudo entrar. Ejemplo: chequear_cupo(['Agustina', 'Iara', 'Priscila', 'Sol', 'Lucía'], 3) debe devolver 'Priscila', porque es la última que tuvo cupo.
+'''def chequear_cupo(listapersonas, numerocupo):
+    return listapersonas[numerocupo - 1]
+
+print(chequear_cupo(['Agustina', 'Iara', 'Priscila', 'Sol', 'Lucía'], 3))'''
+
+
+# EJERCICIO 4.4 - a.b.c.d
+# Dada la lista de tuplas [("Argentina", 3), ("España",1), ("Uruguay", 2), ("Francia",2)], donde cada tupla contiene un país y la cantidad de mundiales que ganaron:
+
+# Hacer una función que reciba la lista por parámetro e imprima la información de cada país con el siguiente formato: País: <nombre> - Copas: <cantidad>
+'''def imprimir_info(lista):
+    for pais, copas in lista:
+        if pais == "Argentina":
+            pais += "⭐⭐⭐"
+
+        print(f"País: {pais} - Copas: {copas}")'''
+
+# Hacer una función que reciba la lista por parámetro y devuelva la cantidad de mundiales que ganaron entre todos los países. Ejemplo: contar_mundiales([("Argentina", 3), ("España",1), ("Uruguay", 2), ("Francia",2)]) debe devolver 8.
+'''def contar_mundiales(lista):
+    contador = 0
+    for pais, copas in lista:
+        contador += copas
+    
+    return contador'''
+
+# Hacer una función que reciba la lista por parámetro y la devuelva, ordenada por cantidad de copas ganadas.
+'''def ordenar_por_copas(lista):
+    return sorted(lista, reverse=True, key=lambda pais: pais[1])'''
+
+# Hacer una función que reciba la lista por parámetro y devuelva en una tupla: una lista con los países que tienen más de una copa ganada, y otra lista con valores booleanos que nos diga si la cantidad de copas es par o impar. Pista: ¿Cómo podemos usar filter? ¿Y map?
+'''def mas_de_una_copa(lista):
+    pais, copa = lista
+    return copa > 1
+
+def es_par(lista):
+    pais, copa = lista
+    return copa % 2 == 0
+
+def obtener_info(lista):
+    paises_mas_de_una_copa = list(filter(mas_de_una_copa, lista))
+
+    paises_copas_pares = list(map(es_par, lista))
+
+    return (paises_mas_de_una_copa, paises_copas_pares)
+
+
+print(obtener_info([("Argentina", 3), ("España",1), ("Uruguay", 2), ("Francia",2)]))'''
+
+
+# EJERCICIO 4.5 - a.b
+# Escribir una función que reciba dos fichas de dominó y determine si encajan o no entre sí.
+
+# Resolver teniendo en cuenta que las fichas se reciben con formato de tuplas. Ejemplo: (3,4) y (5,4).
+'''
+def domino_encajan(ficha_1, ficha_2):
+    f1_n1, f1_n2 = ficha_1
+
+    if (f1_n1 in ficha_2) or (f1_n2 in ficha_2):
+        return "Encajan"
+    else:
+        return "No Encajan"
+'''
+    
+# Resolver teniendo en cuenta que las fichas se reciben con formato de string. Ejemplo: '3-4' y '5-4'
+'''
+def domino_encajan(ficha_1, ficha_2):
+    ficha_1 = ficha_1.split("-")
+    ficha_2 = ficha_2.split("-")
+
+
+    if (ficha_1[0] in ficha_2) or (ficha_1[1] in ficha_2):
+        return "Encajan"
+    else:
+        return "No Encajan"
+    
+print(domino_encajan("3-5", "5-4"))
+'''
+
+
+# EJERCICIO 4.6
+# Escribir una función que reciba dos vectores y devuelva su prod_escalar
+'''def prod_escalar(vector1, vector2):
+    if len(vector1) != len(vector2):
+        return None
+    
+    suma = 0
+
+    for i in range(len(vector1)):
+        suma += vector1[i] * vector2[i]
+
+    return suma'''
+
+
+# EJERCICIO 4.7
+# Escribir una función que reciba una tupla, un índice, y un nuevo valor. La función debe modificar la tupla, cambiando el valor en la posición dada por el índice, por el nuevo valor pasado como parámetro. Devolver la tupla modificada.
+
+
+
+
+
 
          
