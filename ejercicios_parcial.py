@@ -179,7 +179,7 @@ def analizar_adn_digital(cadena, patron):
     # Cantidad de 1 presentes en la cadena
     cantidad_1 = cadena.count("1")
     # Cantidad de 0 presentes en la cadena
-    cantidade_0 = cadena.count("0")
+    cantidad_0 = cadena.count("0")
     # Cantidad de veces que aparece el patrón dado, dentro de la cadena.
     cantidad_patron = cadena.count(patron)
     # Posición de la primera aparición del patrón dentro de la cadena (sabemos que siempre aparece al menos una vez).
@@ -194,7 +194,7 @@ def analizar_adn_digital(cadena, patron):
     porcentaje = (ni_0_ni_1 / len(cadena)) * 100
 
 
-    return (cantidad_1, cantidade_0, cantidad_patron, patron_pos, round(porcentaje, 2))
+    return (cantidad_1, cantidad_0, cantidad_patron, patron_pos, round(porcentaje, 2))
 
 print(analizar_adn_digital("1f1010110111W301010", "1010"))
 '''
@@ -481,11 +481,175 @@ Por ejemplo, si recibimos [(1, 2, 2, -1), (1, 1, 2, 3), (3, 4, 4, -3)] debemos d
 BONUS: resolver sin ciclos.
 '''
 
-def es_perpendicular(vector):
+'''def es_perpendicular(vector):
     vx, vy, wx, wy = vector
     return vx * wx + vy * wy == 0
 
 def vectores_perpendiculares(lista_vectores):
     return list(filter(es_perpendicular, lista_vectores))
     
-print(vectores_perpendiculares([(1, 2, 2, -1), (1, 1, 2, 3), (3, 4, 4, -3)]))
+print(vectores_perpendiculares([(1, 2, 2, -1), (1, 1, 2, 3), (3, 4, 4, -3)]))'''
+
+
+# ------------------------------ 11 -------------------------------------------------------------------------------------------------
+
+'''
+Ejercicio 11
+
+Una empresa necesita preparar un listado de contacto interno para ciertos empleados. Por motivos de privacidad, no se quiere mostrar el número de teléfono completo de los empleados, sino una versión enmascarada.
+
+Para este listado solo se deben incluir aquellos empleados cuyos números de teléfono correspondan a Argentina (es decir, que empiecen con 54).
+
+Para proteger la información, todos los dígitos del número deben ser reemplazados por asteriscos (*) excepto los últimos tres, que quedarán visibles.
+
+Hay que hacer una función que reciba una lista y realice lo pedido. Por ejemplo, si se recibe la siguiente lista de números:
+
+[541145934696, 34678901234, 5491155554444, 542231234567, 1234567890]
+
+Debe devolver: [*********696", "***********4444", "*********567"]
+'''
+
+'''
+def proteger_numeros(lista_numeros):
+    numeros_protegidos = []
+    for numero in lista_numeros:
+        numero_str = str(numero)
+        if numero_str[:2] == "54":
+            protegido = ""
+            posicion = 0
+            for digito in numero_str:
+                if posicion < len(numero_str) - 3:
+                    protegido += "*"
+                else:
+                    protegido += digito
+
+                posicion += 1
+                
+            numeros_protegidos.append(protegido)
+    
+    return numeros_protegidos
+
+print(proteger_numeros([541145934696, 34678901234, 5491155554444, 542231234567, 1234567890]))
+'''
+    
+
+# ------------------------------ 12 -------------------------------------------------------------------------------------------------
+
+'''
+Ejercicio 12
+
+Hacer una función que dada la cantidad de ejercicios de un examen y el porcentaje de ejercicios bien resueltos necesarios para
+aprobar dicho examen, revise un grupo de exámenes para decidir si están aprobados o no.
+El programa debe preguntarle al usuario la cantidad de ejercicios resueltos por un alumno, e imprimir por pantalla el porcentaje
+correspondiente aprobado del examen, indicando si aprobó o no. Debe repetir esto mientras el usuario no ingrese el caracter "*".
+Nota: El porcentaje se calcula como: ejs resueltos / total ejercicios * 100.
+Ejemplo: se recibe 10 ejercicios, y 40 como porcentaje de aprobación:
+'''
+
+'''
+def aprobacion(ejercicios, porcentaje_aprobacion):
+    print(f"> Ejercicios: {ejercicios}. Porcentaje de aprobación: {porcentaje_aprobacion}%")
+
+    usuario = input("> Ingrese los ejercicios resueltos o '*' para salir: ")
+
+    while usuario != "*":
+        porcentaje = int(usuario)/ejercicios * 100
+        print(f">> Se tiene {porcentaje}% del examen aprobado. Aprobado: {porcentaje >= porcentaje_aprobacion}")
+
+        usuario = input("> Ingrese los ejercicios resueltos o '*' para salir: ")
+
+
+aprobacion(10, 40)
+'''
+
+
+# ------------------------------ 13 -------------------------------------------------------------------------------------------------
+
+'''
+Ejercicio 13
+
+Los docentes de Pensamiento Computacional crean un lenguaje secreto para poder corregir los exámenes a medida que los
+entregan, sin que los estudiantes se den cuenta. Cada letra tiene el siguiente significado:
+"F": "Desaprobado"
+"A": "Aprobado (confirmar nota)"
+"C": "Copia (recursa)"
+Cualquier otra sigla, se traduce como “Error”.
+Al momento de pasar las notas, hay que traducir del lenguaje secreto al significado de cada uno.
+Hacer una función que reciba una lista de listas, con los apellidos y la sigla del lenguaje secreto, y devuelva una nueva lista
+asignando el significado de cada una. Resolver únicamente con lo visto en la materia hasta el momento y las herramientas que se
+dieron para el parcial.
+Por ejemplo, si se recibe:
+[["Rastrelli", "F"], ["Mendez", "A"], ["Notari", "C"], ["Duzac", "W"]],
+se debe devolver
+[["Rastrelli", "Desaprobado"], ["Mendez", "Aprobado (confirmar nota)"], ["Notari", "Copia
+(recursa)"], ["Duzac", "Error"]].
+
+'''
+
+'''def corregir_examenes(lista_de_alumnos):
+    notas = {
+        "F": "Desaprobado",
+        "A": "Aprobado (confirmar nota)",
+        "C": "Copia (recursa)"
+    }
+    corregido = []
+
+    for alumno, nota in lista_de_alumnos:
+        corregido.append([alumno, notas.get(nota, "Error")])
+
+    return corregido
+
+def corregir_examenes2(lista_de_alumnos):
+    corregido = []
+
+    for alumno, letra in lista_de_alumnos:
+        if letra == "F":
+            nota = "Desaprobado"
+        elif letra == "A":
+            nota = "Aprobado (confirmar nota)"
+        elif letra == "C":
+            nota = "Copia (recursa)"
+        else:
+            nota = "Error"
+
+        corregido.append([alumno, nota])
+
+    return corregido
+
+
+print(corregir_examenes([["Rastrelli", "F"], ["Mendez", "A"], ["Notari", "C"], ["Duzac", "W"]]))
+'''
+
+
+# ------------------------------ 14 -------------------------------------------------------------------------------------------------
+
+'''
+Ejercicio 14
+
+Un estudiante de Pensamiento Computacional consigue un trabajo de developer en un banco, y su primera tarea es lograr ocultar
+el saldo de la persona.
+Hacer una función que reciba una cadena y que cambie todos los dígitos por un "*".
+La única limitación es: no se puede usar la función isdigit.
+Por ejemplo, si se recibe: "Su saldo en cuenta es: $1500", debe devolver "Su saldo en cuenta es: $****".
+'''
+
+'''
+def ocultar_saldo(cadena):
+    devolucion = ""
+    for caracter in cadena:
+        if caracter in "0123456789":
+            devolucion += "*"
+        else:
+            devolucion += caracter
+    
+    return devolucion
+
+print(ocultar_saldo("Su saldo en cuenta es: $1500"))
+'''
+
+
+# ------------------------------ 15 -------------------------------------------------------------------------------------------------
+
+'''
+'''
+
