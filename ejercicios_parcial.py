@@ -651,5 +651,141 @@ print(ocultar_saldo("Su saldo en cuenta es: $1500"))
 # ------------------------------ 15 -------------------------------------------------------------------------------------------------
 
 '''
+Ejercicio 15
+
+En FIUBA, el sistema de gestión académica SIU-Guaraní necesita generar contraseñas iniciales para los estudiantes.
+
+Por motivos de seguridad, la contraseña se construye a partir de los siguientes datos:
+
+Nombre del estudiante (cadena).
+Año de ingreso a la facultad (entero).
+
+La contraseña se arma de la siguiente forma:
+
+La primera letra del nombre en mayúscula.
+La cantidad de letras del nombre (suponemos que no se ingresa nunca con espacios).
+Las tres ultimas letras del nombre en minúscula.
+El año de ingreso escrito en orden inverso (ejemplo: 2022 → 2202).
+
+Se pide implementar una función generar_contraseña(nombre_alumno, anio_ingreso) que devuelva la contraseña generada siguiendo las reglas anteriores.
+
+Ejemplos:
+
+generar_contraseña("julieta", 2020)
+
+devuelve
+
+"J7eta0202"
+generar_contraseña("FelipeMARTIN", 2023)
+
+devuelve
+
+"12Ftin3202"
 '''
 
+'''
+def generar_contraseña(nombre_alumno, anio_ingreso):
+    anio_ingreso = str(anio_ingreso)
+    parte1 = (nombre_alumno[0]).upper()
+    parte2 = str(len(nombre_alumno))
+    parte3 = (nombre_alumno[-3:]).lower()
+    parte4 = anio_ingreso[::-1]
+
+    return f"{parte1+parte2+parte3+parte4}"
+
+print(generar_contraseña("julieta", 2020))
+print(generar_contraseña("FelipeMARTIN", 2023))
+'''
+
+
+# ------------------------------ 16 -------------------------------------------------------------------------------------------------
+'''
+Ejercicio 16
+
+En FIUBA, existe un equipo que se encarga de gestionar Pasantías para los alumnos. Es por esto, que están estandarizando cómo aparecen las habilidades de los estudiantes en los CVs para usarlas en distintas planillas de gestión. Para eso necesitan generar una sigla formada por las iniciales de cada palabra que pertenezca a la habilidad dada.
+
+Tenemos que desarrollar una función que reciba una cadena con el nombre de una o más habilidades separadas por espacios (por ejemplo: "Ciencia de Datos y Simulación") y devuelva una nueva cadena con la primera letra de cada palabra en mayúsculas, en el mismo orden en que aparecen. Donde, a su vez, se deben respetar los conectores de los nombres de las habilidades manteniendo a los mismos en minúscula. Sabiendo que los conectores son: de, del, y, e, la, las, el y los.
+
+Algunos ejemplos:
+
+"Ciencia de Datos" ---> "CdD"
+"Ciencia de Datos y Simulación" —> "CdDyS"
+" sistemas operativos y redes " --> "SOyR"
+"Análisis Matemático" --> "AM"
+
+Realizar la función pedida.
+'''
+
+'''
+def formatizar_habilidades(cadena):
+    cadena = cadena.split()
+    separadores = ["de", "del", "y", "e", "la", "las", "el", "los"]
+    formatizado = ""
+
+    for palabra in cadena:
+        if palabra.lower() in separadores:
+            formatizado += palabra[0].lower()
+        else:
+            formatizado += palabra[0].upper()
+        
+    return formatizado
+
+print(formatizar_habilidades("Ciencia de Datos"))
+print(formatizar_habilidades("Ciencia de Datos y Simulación"))
+print(formatizar_habilidades(" sistemas operativos y redes"))
+print(formatizar_habilidades("Análisis Matemático"))
+print(formatizar_habilidades("Pensamiento Computacional"))
+'''
+
+
+# ------------------------------ 17 -------------------------------------------------------------------------------------------------
+'''
+Ejercicio 17
+
+¡Juguemos al ahorcado!
+
+Hacer un programa que reciba una lista de caracteres que forman una palabra y una cantidad de chances. En cada turno, el usuario debe ingresar una letra para intentar adivinar la palabra. Si el usuario se equivoca, se le resta una chance; si adivina, no se le resta nada. El juego continúa hasta que se adivinen todas las letras de la palabra o el usuario se quede sin intentos. Después de cada intento, se debe indicar las letras ingresadas incorrectamente.
+
+Asumir que las letras de la lista están siempre en minúscula, pero el usuario puede ingresar tanto mayúsculas como minúsculas.
+
+Por ejemplo, si se reciben ["m", "e", "s", "s", "i"] y 2 intentos:
+
+> ¡Que comience el juego!
+> Intentos disponibles: 2. Ingrese una letra para seguir adivinando: A
+> Incorrecto. Letras incorrectas: ["A"]
+> Intentos disponibles: 1. Ingrese una letra para seguir adivinando: m
+> Correcto! Letras incorrectas: ["A"]
+> Intentos disponibles: 1. Ingrese una letra para seguir adivinando: l
+> Incorrecto. Letras incorrectas: ["A", "l"]
+> Te has quedado sin intentos. ¡Más suerte la próxima!
+'''
+
+def juego_ahorcado(lista_de_caracteres, intentos):
+    correctas = ["X" for letra in lista_de_caracteres]
+    incorrectas = []
+    print(f">>> {correctas}")
+    print(f">>> La palabra cuenta con {len(lista_de_caracteres)} letras")
+    print("> ¡Que comience el juego!")
+
+    while intentos != 0 and correctas != lista_de_caracteres:
+        intento = input(f"> Intentos disponibles: {intentos}. Ingrese una letra para seguir adivinando: ")
+
+        intento = intento.lower()
+        if intento in lista_de_caracteres:
+            for i in range(len(lista_de_caracteres)):
+                if lista_de_caracteres[i] == intento:
+                    correctas[i] = intento
+
+            print(f">> Muy Bien! Letras adivinadas : {correctas}")
+        else:
+            incorrectas.append(intento)
+            intentos -= 1
+            print(f">> Incorrecto. Letras incorrectas: {incorrectas}")
+    
+    if intentos == 0:
+        print(">>> Te has quedado sin intentos. ¡Más suerte la próxima!")
+    elif correctas == lista_de_caracteres:
+        print(f">>> Perfecto! adivinaste la palabra!, era : '{"".join(correctas)}'")
+
+
+juego_ahorcado(["m", "e", "s", "s", "i"], 2)
